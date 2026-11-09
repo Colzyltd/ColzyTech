@@ -28,4 +28,13 @@ export const PROJECTS = [
     image: "/images/projects/colzy.png",
     url: "https://colzyltd.com",
   },
+  {
+    id: "wiser",
+    title: "Wiser Luxury Cologne",
+    category: "Business Site",
+    description: "Brand site for a Luxury perfume vendor.",
+    stack: ["React", "Vite", "Vercel"],
+    image: "/images/projects/wiser.png",
+    url: "https://wiserperfumery.com",
+  },
 ];
