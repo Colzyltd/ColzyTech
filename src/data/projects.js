@@ -1,0 +1,31 @@
+// size: "wide" makes a card span two columns on desktop. Categories become the filter tabs.
+export const PROJECTS = [
+  {
+    id: "cibus-musica",
+    title: "Cibus Musica",
+    category: "Web App",
+    size: "wide",
+    description: "Food and music festival site with tiered online ticket sales and an admin dashboard.",
+    stack: ["React", "Firebase", "Paystack"],
+    image: "/images/projects/cibusmusicared.jpg",
+    url: "https://cibusmusica.com",
+  },
+  {
+    id: "tricousins",
+    title: "Tricousins",
+    category: "Business Site",
+    description: "Online presence for a wine shop, deployed on Vercel.",
+    stack: ["React", "Vite", "Firebase"],
+    image: "/images/projects/tricousins.png",
+    url: "https://tricousins.com",
+  },
+  {
+    id: "colzy-ltd",
+    title: "Colzy Ltd",
+    category: "Business Site",
+    description: "Brand site for a business that combines premium tailoring with technology services.",
+    stack: ["React", "Vite", "Vercel"],
+    image: "/images/projects/colzy.png",
+    url: "https://colzyltd.com",
+  },
+];

@@ -1,0 +1,128 @@
+/* ───────── Tokens ───────── */
+:root {
+  /* ===== YOUR THEME (the three variables your original navbar.css used) =====
+     Paste your real values here. Everything below derives from these. */
+  --primary-dark:   #0f0f0f;
+  --text-primary:   #f2efe9;
+  --text-secondary: #c9a063;
+
+  /* derived - don't edit, change the three above */
+  --bg:       var(--primary-dark);
+  --bg-alt:   color-mix(in srgb, var(--primary-dark), white 5%);
+  --bg-card:  color-mix(in srgb, var(--primary-dark), white 9%);
+  --text:     var(--text-primary);
+  --gold:     var(--text-secondary);
+  --gold-soft: color-mix(in srgb, var(--gold) 12%, transparent);
+  --muted:    color-mix(in srgb, var(--text) 60%, transparent);
+  --line:     color-mix(in srgb, var(--text) 8%, transparent);
+
+  --font-display: "Bricolage Grotesque", system-ui, sans-serif;
+  --font-body:    "Inter", system-ui, sans-serif;
+  --font-mono:    "JetBrains Mono", ui-monospace, monospace;
+
+  --nav-h: 72px;
+}
+
+/* ───────── Reset / base ───────── */
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+img { display: block; max-width: 100%; }
+a { color: inherit; }
+ul { list-style: none; }
+button, input, textarea { font: inherit; color: inherit; }
+section[id] { scroll-margin-top: var(--nav-h); }
+
+/* ───────── Shared layout ───────── */
+.container { width: min(1180px, 100% - 2.5rem); margin-inline: auto; }
+.section   { padding: clamp(4.5rem, 9vw, 7.5rem) 0; }
+.gold      { color: var(--gold); }
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.eyebrow--spaced { margin-bottom: 0.9rem; }
+
+.section-heading { text-align: center; }
+.section-heading .eyebrow { margin-top: -1.3rem; position: relative; }
+
+.ghost-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(3rem, 11vw, 6.5rem);
+  line-height: 1;
+  letter-spacing: 0.01em;
+  color: rgba(255, 255, 255, 0.06);
+}
+.ghost-title--left { text-align: left; margin-bottom: 3rem; }
+
+/* ───────── Buttons ───────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 2rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.25s, color 0.25s, border-color 0.25s, transform 0.25s;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn--outline { border-color: rgba(255, 255, 255, 0.7); color: #fff; }
+.btn--outline:hover { border-color: var(--gold); color: var(--gold); }
+.btn--solid { background: var(--text); color: var(--primary-dark); }
+.btn--solid:hover { background: var(--gold); }
+.btn--gold { background: var(--gold); color: var(--primary-dark); }
+.btn--gold:hover { background: var(--text); }
+.btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+/* ───────── Hexagon (service icons, social links) ───────── */
+.hex {
+  display: grid;
+  place-items: center;
+  width: 76px; height: 84px;
+  background: var(--gold-soft);
+  color: var(--gold);
+  clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+}
+.hex--sm {
+  width: 40px; height: 44px;
+  background: rgba(255, 255, 255, 0.07);
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  text-decoration: none;
+  transition: background 0.25s, color 0.25s;
+}
+.hex--sm:hover { background: var(--gold); color: var(--primary-dark); }
+
+/* ───────── Motion ───────── */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.8s ease, transform 0.8s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+@keyframes bob    { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .reveal { opacity: 1; transform: none; }
+  .skill-bar span { width: var(--level) !important; }
+}
